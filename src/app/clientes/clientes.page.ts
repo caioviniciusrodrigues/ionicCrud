@@ -13,6 +13,7 @@ export class ClientesPage implements OnInit {
   clientes: any = [];
   limit: number = 10;
   start: number = 0;  
+  nome: string = "";
 
   constructor(private router: Router, private provider: PostProvider, private toastController: ToastController) { }
 
@@ -78,6 +79,24 @@ export class ClientesPage implements OnInit {
       
       this.provider.inserirApi(dados, '/inserirCliente.php').subscribe(data => {
         console.log(data);
+        for(let cliente of data['result']){
+          this.clientes.push(cliente);
+        }
+      })   
+        resolve(true);
+      
+    });
+  }
+
+  buscar() {    
+    return new Promise(resolve => {
+      let dados = {
+        requisicao : 'buscar',
+        nome: this.nome
+      };
+      
+      this.provider.inserirApi(dados, '/inserirCliente.php').subscribe(data => {
+        this.clientes = [];
         for(let cliente of data['result']){
           this.clientes.push(cliente);
         }
