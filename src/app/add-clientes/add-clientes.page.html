@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" (click)="backCliente()">
+        <ion-button color="primary">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>        
+      </ion-buttons>
+    <ion-title>Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-item>
+        <ion-label color="primary" floating>Nome</ion-label>
+        <ion-input [(ngModel)]="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="primary" floating>Telefone</ion-label>
+        <ion-input [(ngModel)]="telefone" type="tel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="primary" floating>E-mail</ion-label>
+        <ion-input [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button *ngIf="!id" color="success" expand="block" (click)="cadastrar()">
+        <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
+        Salvar
+    </ion-button> 
+
+    <ion-button *ngIf="id > 0" color="primary" expand="block" (click)="editar()">
+        <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
+        Editar
+    </ion-button> 
+
+</ion-content>
